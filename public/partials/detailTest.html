@@ -1,0 +1,373 @@
+<section>
+
+	<form class="form-horizontal" role="form">
+
+		        <div class="form-group">
+			        	<label for="test"  class="col-sm-2 control-label">Test Name:</label>
+				        <div class="col-sm-2">
+				         	<input type="test" ng-model="formData.testName" class="form-control" required="required" id="test">
+				        </div>
+	      		</div>
+
+			    <div class="form-group">
+			        <label for="testDescription"  class="col-sm-2 control-label">Test Description:</label>
+				    <div class="col-sm-9">
+				        <input type="text" name="question" ng-model="formData.testDescription" class="form-control" required="required" id="testDescription">
+				    </div>
+			    </div>
+
+			    <div class="form-group">    
+				    <label class="col-sm-2 control-label" for="testCategory">Test Category:</label>
+				    <div class="col-sm-9">
+				    	<select id="testCategory" class="form-control">
+							<option value="1">3D and Animation</option>
+							<option value="2">3D Drawing</option>
+							<option value="3">Accessibility</option>
+							<option value="4">Accounting</option>
+							<option value="5">Acoustical engineering</option>
+							<option value="6">Acoustics</option>
+							<option value="7">Administrative sciences including</option>
+							<option value="8">Advertisement</option>
+							<option value="9">Advertising</option>
+							<option value="10">Aeronautics</option>
+							<option value="11">Agriculture Engineering</option>
+							<option value="12">Analytical chemistry Crystallography</option>
+							<option value="13">Analytics</option>
+							<option value="14">Animation</option>
+							<option value="15">Anthropology including</option>
+							<option value="16">Applied Mathematics</option>
+							<option value="17">Applied mechanics</option>
+							<option value="18">Applied optics</option>
+							<option value="19">Archeology</option>
+							<option value="20">Architecture</option>
+							<option value="21">Arts and Humanities</option>
+							<option value="22">Astronautics</option>
+							<option value="23">Astronomy</option>
+							<option value="24">Astro-physics</option>
+							<option value="25">Audio and Music</option>
+							<option value="26">Audio Effects</option>
+							<option value="27">Audio Engineering</option>
+							<option value="28">Audio for Video</option>
+							<option value="29">Audio Foundations</option>
+							<option value="30">Audio Plug-Ins</option>
+							<option value="31">Banking</option>
+							<option value="32">Big Data</option>
+							<option value="33">BIM</option>
+							<option value="34">Biochemistry</option>
+							<option value="35">Bioengineering</option>
+							<option value="36">Biotechnology</option>
+							<option value="37">Black and White</option>
+							<option value="38">Blogs</option>
+							<option value="39">Botanical sciences</option>
+							<option value="40">Botany</option>
+							<option value="41">Branding</option>
+							<option value="42">Business</option>
+							<option value="43">Business Administration and Management</option>
+							<option value="44">Business Education</option>
+							<option value="45">Business Intelligence</option>
+							<option value="46">Business Skills</option>
+							<option value="47">CAD</option>
+							<option value="48">Cameras and Gear</option>
+							<option value="49">Career Development</option>
+							<option value="50">Character Animation</option>
+							<option value="51">Charts and Graphs</option>
+							<option value="52">Civil engineering</option>
+							<option value="53">Classroom Management</option>
+							<option value="54">Cloud Computing</option>
+							<option value="55">CMS</option>
+							<option value="56">Collaboration</option>
+							<option value="57">Color</option>
+							<option value="58">Color Correction</option>
+							<option value="59">Commerce</option>
+							<option value="60">Communication</option>
+							<option value="61">Compositing</option>
+							<option value="62">Computer Engineering</option>
+							<option value="63">Computer Skills (Mac</option>
+							<option value="64">Computer Skills (Windows</option>
+							<option value="65">Construction</option>
+							<option value="66">Content Marketing</option>
+							<option value="67">Content Strategy</option>
+							<option value="68">Creative Insights</option>
+							<option value="69">Creative Inspirations</option>
+							<option value="70">Creative Spark</option>
+							<option value="71">Criminology</option>
+							<option value="72">Data Analysis</option>
+							<option value="73">Databases</option>
+							<option value="74">DAWs</option>
+							<option value="75">Dentistry</option>
+							<option value="76">Dermatology</option>
+							<option value="77">Design</option>
+							<option value="78">Design Business</option>
+							<option value="79">Design Foundations</option>
+							<option value="80">Design Patterns</option>
+							<option value="81">Design Skills</option>
+							<option value="82">Design Techniques</option>
+							<option value="83">Desktop Apps</option>
+							<option value="84">Developer</option>
+							<option value="85">Development Tools</option>
+							<option value="86">Digital Painting</option>
+							<option value="87">Digital Publishing</option>
+							<option value="88">Documentaries</option>
+							<option value="89">Drawing</option>
+							<option value="90">DSLR Video</option>
+							<option value="91">DVD Authoring</option>
+							<option value="92">Earth sciences and Allied Sciences</option>
+							<option value="93">Earth, Atmosphere and Marine Sciences</option>
+							<option value="94">Ebooks</option>
+							<option value="95">Ecommerce</option>
+							<option value="96">Economic geology</option>
+							<option value="97">Economics</option>
+							<option value="98">Education</option>
+							<option value="99">Educational Technology</option>
+							<option value="100">Elearning</option>
+							<option value="101">Electrical engineering</option>
+							<option value="102">Electronics</option>
+							<option value="103">Email</option>
+							<option value="104">Email Marketing</option>
+							<option value="105">Engineering and Technology</option>
+							<option value="106">Engineering economy</option>
+							<option value="107">Engineering meteorology</option>
+							<option value="108">Enterprise Content Management</option>
+							<option value="109">Enterprise Marketing</option>
+							<option value="110">Environmental engineering</option>
+							<option value="111">Ergonomics</option>
+							<option value="112">Evolution and genetics Microbiology</option>
+							<option value="113">Film Scoring</option>
+							<option value="114">Filmmaking</option>
+							<option value="115">Finance</option>
+							<option value="116">Finance Management</option>
+							<option value="117">Fine Arts</option>
+							<option value="118">Flash Photography</option>
+							<option value="119">Forms</option>
+							<option value="120">Freelancing</option>
+							<option value="121">Game Design</option>
+							<option value="122">Game Development</option>
+							<option value="123">Games</option>
+							<option value="124">Geography</option>
+							<option value="125">Geology</option>
+							<option value="126">GIS</option>
+							<option value="127">HDR</option>
+							<option value="128">Higher Education</option>
+							<option value="129">Hillman Curtis Artist Series</option>
+							<option value="130">History</option>
+							<option value="131">Home and Small Office</option>
+							<option value="132">Hydraulic engineering</option>
+							<option value="133">hydrology</option>
+							<option value="134">Illustration</option>
+							<option value="135">Industrial engineering</option>
+							<option value="136">Infographics</option>
+							<option value="137">Instructional Design</option>
+							<option value="138">Interaction Design</option>
+							<option value="139">Interior Design</option>
+							<option value="140">Internal medicine</option>
+							<option value="141">International Relations</option>
+							<option value="142">iPad Music Production</option>
+							<option value="143">iPhone, iPod, iPad</option>
+							<option value="144">IT</option>
+							<option value="145">IT and Hardware</option>
+							<option value="146">IT Help Desk</option>
+							<option value="147">Journalism</option>
+							<option value="148">Keying</option>
+							<option value="149">Languages</option>
+							<option value="150">Law and Legislature</option>
+							<option value="151">Lead Generation</option>
+							<option value="152">Leadership</option>
+							<option value="153">Library and Archival Sciences</option>
+							<option value="154">Lighting</option>
+							<option value="155">Literature</option>
+							<option value="156">Live Performance</option>
+							<option value="157">LMS</option>
+							<option value="158">Logo Design</option>
+							<option value="159">lynda.com Presents</option>
+							<option value="160">Management</option>
+							<option value="161">Management engineering</option>
+							<option value="162">Management information systems</option>
+							<option value="163">Manufacturing</option>
+							<option value="164">Marketing</option>
+							<option value="165">Masking and Compositing</option>
+							<option value="166">mass</option>
+							<option value="167">Mastering</option>
+							<option value="168">Materials</option>
+							<option value="169">Mathematics</option>
+							<option value="170">Mechanical engineering</option>
+							<option value="171">Mechanics</option>
+							<option value="172">Medicine</option>
+							<option value="173">Medicine all subjects including</option>
+							<option value="174">MEP</option>
+							<option value="175">Metallurgy</option>
+							<option value="176">meteorology</option>
+							<option value="177">Microphones</option>
+							<option value="178">Mineralogy</option>
+							<option value="179">Mining engineering</option>
+							<option value="180">Mixing</option>
+							<option value="181">Mobile Apps</option>
+							<option value="182">Mobile Marketing</option>
+							<option value="183">Mobile Web</option>
+							<option value="184">Modeling</option>
+							<option value="185">Motion Graphics</option>
+							<option value="186">Museology</option>
+							<option value="187">Museum</option>
+							<option value="188">Music</option>
+							<option value="189">Music Business</option>
+							<option value="190">Music Composition</option>
+							<option value="191">Music Editing</option>
+							<option value="192">Music Notation</option>
+							<option value="193">Music Production</option>
+							<option value="194">Network Administration</option>
+							<option value="195">Night and Low Light</option>
+							<option value="196">Note Taking</option>
+							<option value="197">Nuclear engineering</option>
+							<option value="198">Nursing</option>
+							<option value="199">Oceanography</option>
+							<option value="200">Online Marketing</option>
+							<option value="201">Operating Systems</option>
+							<option value="202">Ophthalmology</option>
+							<option value="203">Page Layout</option>
+							<option value="204">Paleobotany</option>
+							<option value="205">Paleontology- Paleozoology</option>
+							<option value="206">Paleo-zoology</option>
+							<option value="207">Particles</option>
+							<option value="208">Pathology</option>
+							<option value="209">Pediatrics</option>
+							<option value="210">performing art</option>
+							<option value="211">Petrology</option>
+							<option value="212">Pharmacology</option>
+							<option value="213">Pharmacy</option>
+							<option value="214">Philosophy</option>
+							<option value="215">Photo Management</option>
+							<option value="216">Photography</option>
+							<option value="217">Photography Foundations</option>
+							<option value="218">Photonics</option>
+							<option value="219">Physical</option>
+							<option value="220">Physical anthropology</option>
+							<option value="221">Physical Sciences</option>
+							<option value="222">Physics all specialties including</option>
+							<option value="223">Plasma engineering</option>
+							<option value="224">Plugin</option>
+							<option value="225">Podcasting</option>
+							<option value="226">Political Science</option>
+							<option value="227">Portraits</option>
+							<option value="228">Post Production</option>
+							<option value="229">PPC</option>
+							<option value="230">Presentations</option>
+							<option value="231">Previsualization</option>
+							<option value="232">Print Design</option>
+							<option value="233">Print Production</option>
+							<option value="234">Printing Photos</option>
+							<option value="235">Product Design</option>
+							<option value="236">Productivity</option>
+							<option value="237">Programming Foundations</option>
+							<option value="238">Programming Languages</option>
+							<option value="239">Project Management</option>
+							<option value="240">Projects</option>
+							<option value="241">Proteomics</option>
+							<option value="242">Prototyping</option>
+							<option value="243">Psychology</option>
+							<option value="244">Public Administration</option>
+							<option value="245">Public Relations</option>
+							<option value="246">Raw Processing</option>
+							<option value="247">Recording Techniques</option>
+							<option value="248">Recreational</option>
+							<option value="249">Religious Studies</option>
+							<option value="250">Remixing</option>
+							<option value="251">Rendering</option>
+							<option value="252">Responsive Design</option>
+							<option value="253">Restoration</option>
+							<option value="254">Retouching</option>
+							<option value="255">Santa Barbara Film Festival</option>
+							<option value="256">Scanning</option>
+							<option value="257">science</option>
+							<option value="258">Screenwriting</option>
+							<option value="259">Security</option>
+							<option value="260">SEM</option>
+							<option value="261">SEO</option>
+							<option value="262">Servers</option>
+							<option value="263">Sharing Photos</option>
+							<option value="264">Sharpening</option>
+							<option value="265">Shooting Video</option>
+							<option value="266">Site-planning</option>
+							<option value="267">Small Business Marketing</option>
+							<option value="268">Social Media Advertising</option>
+							<option value="269">Social Media Marketing</option>
+							<option value="270">Social Networks</option>
+							<option value="271">Social Sciences</option>
+							<option value="272">Sociology</option>
+							<option value="273">sports</option>
+							<option value="274">Spreadsheets</option>
+							<option value="275">Start to Finish</option>
+							<option value="276">Statistics</option>
+							<option value="277">Structural</option>
+							<option value="278">Structural engineering</option>
+							<option value="279">Student Tools</option>
+							<option value="280">Studio Setup</option>
+							<option value="281">Systems engineering</option>
+							<option value="282">Teacher Professional Development</option>
+							<option value="283">Teacher Tools</option>
+							<option value="284">Technical Industrial research</option>
+							<option value="285">Technology includes</option>
+							<option value="286">Textures</option>
+							<option value="287">Time Management</option>
+							<option value="288">Tuning</option>
+							<option value="289">Typography</option>
+							<option value="290">User Experience</option>
+							<option value="291">Video</option>
+							<option value="292">Video Cameras</option>
+							<option value="293">Video Delivery</option>
+							<option value="294">Video Editing</option>
+							<option value="295">Video Foundations</option>
+							<option value="296">Video Pre-Production</option>
+							<option value="297">Virtual Instruments</option>
+							<option value="298">Virtualization</option>
+							<option value="299">Visual Effects</option>
+							<option value="300">Web</option>
+							<option value="301">Web Conferencing</option>
+							<option value="302">Web Design</option>
+							<option value="303">Web Development</option>
+							<option value="304">Web Fonts</option>
+							<option value="305">Web Foundations</option>
+							<option value="306">Web Graphics</option>
+							<option value="307">Web Video</option>
+							<option value="308">Wireframing</option>
+							<option value="309">Word Processing</option>
+							<option value="310">Writing</option>
+							<option value="311">Zoological sciences</option>
+							<option value="312">Zoology</option>
+						</select>   
+				    </div>
+			    </div>
+
+			    <div class="form-group">
+			            <label class="col-sm-2 control-label" for="testInstructions">Test Instructions:</label>
+			            <div class="col-sm-9">
+			            	<textarea class="form-control" rows="3" id="testInstructions"></textarea>
+			            </div>
+         		</div>
+
+         		<div class="form-group">
+			            <label class="col-sm-2 control-label" for="testTagsOrKeywords">Tags or Keywords:</label>
+			            <div class="col-sm-9">
+			            	<input class="form-control" rows="3" id="testTagsOrKeywords">
+			            </div>
+         		</div>
+
+         		<div class="form-group">
+			            <label class="col-sm-2 control-label" for="testTargetAudience">Target Audience:</label>
+			            <div class="col-sm-9">
+			            	<input class="form-control" rows="3" id="testTargetAudience">
+			            </div>
+         		</div>
+
+                <div>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Go Back
+                    </button>
+                    <button class="btn btn-primary">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Create Test
+                    </button>
+                </div>
+	</form>
+
+</section>
+

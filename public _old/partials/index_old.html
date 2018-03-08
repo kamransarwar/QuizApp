@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="../components/angular/angular.js"></script>
+    <link rel="stylesheet" href="../components/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="app.js"></script>
+  </head>
+  <body>
+
+    <div ng-controller="stTable">
+        <div>
+             <button class="btn btn-default btnSize">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Create New Test
+             </button>
+            <span>
+                <input type="search" class="form-control form-inline">
+            </span>
+
+        </div>
+        <div>
+            <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class=".col-xs-3">Actions</th>
+                <th class=".col-xs-2">Test Name</th>
+                <th class=".col-xs-3">Description</th>
+                <th class=".col-xs-2">Category</th>
+                <th class=".col-xs-2">Tags</th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr ng-repeat="row in rowCollection">
+                <td>
+                    <a href="#">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Edit
+                        </button>
+                    </a>
+                    <a href="#">
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            Delete
+                        </button>
+                    </a>
+                </td>
+                <td>{{row.testName}}</td>
+                <td>{{row.testName}}</td>
+                <td>{{row.testName}}</td>
+                <td>{{row.testName}}</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+
+        <div>
+            <button class="btn btn-default btnSize">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add Question to Test
+        </button>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class=".col-xs-3">Actions</th>
+                    <th class=".col-xs-2">Test Name</th>
+                    <th class=".col-xs-3">Description</th>
+                    <th class=".col-xs-2">Category</th>
+                    <th class=".col-xs-2">Tags</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in rowCollection">
+                    <td>
+                        <a href="#">
+                            <button class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Edit
+                            </button>
+                        </a>
+                        <a href="#">
+                            <button class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                Delete
+                            </button>
+                        </a>
+                    </td>
+                    <td>{{row.testName}}</td>
+                    <td>{{row.testName}}</td>
+                    <td>{{row.testName}}</td>
+                    <td>{{row.testName}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  </body>
+</html>

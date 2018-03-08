@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="utf-8">
+    <title>Quiz App</title>
+    <script src="lib/angular/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/underscore/underscore-min.js"></script>
+    <script src="lib/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+    <script type="text/javascript" src="lib/angular-ui/ng-grid.debug.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/ng-grid.min.css" />
+    <script type="text/javascript" src="js/controllers.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="stylesheets/theme.css" rel="stylesheet">
+
+    <script>
+        var focusOnChoice = function(){
+            document.getElementById("choice").value = '';
+            document.getElementById("choice").focus();
+        }
+    </script>
+</head>
+
+<body ng-controller="MyCtrl" >
+    <!-- Fixed navbar -->
+<!--     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="taketest.html#/test">QUIZ TIME</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="taketest.html#/test">Start Test</a></li>
+                <li class="active"><a href="index_old.html">Add Question to Test</a></li>
+                <li><a href="createTest.html">Create Test</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div> -->
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="test"  class="col-sm-2 control-label">Select Test:</label>
+        <div class="col-sm-2">
+          <select ng-model="formData.selectedTest" ng-options="v.testName for v in fillTest" class="form-control" required="required" id="test"></select>
+        </div>
+      </div>
+
+    <div class="form-group">
+        <label for="question"  class="col-sm-2 control-label">Write Question: </label>
+        <div class="col-sm-9">
+            <input type="text" name="question" ng-model="formData.question" class="form-control" required="required" id="question" class="col-sm-10">
+        </div>
+    </div>
+
+    <div class="form-group">    
+    <label class="col-sm-2 control-label">Question Type:</label>
+        <div class="col-sm-10">
+            <label><input type ="radio" value="singleChoice" name="questionType" ng-model="formData.questionType" required="required">Single Choice</label>
+            <label><input type ="radio" value="multipleChoice" name="questionType" ng-model="formData.questionType" required="required">Multiple Choice</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label class="col-sm-2 control-label">Choices Details:</label>
+            <div class="col-sm-5">
+                <label class="col-sm-1 control-label" for="choice">Choice:</label>
+                <div  class="col-sm-11">
+                    <input type="text" ng-model="choiceDetail" class="form-control"  id="choice">
+                </div>
+            </div>
+            <div class="col-sm-5">    
+                    <label class="col-sm-3 control-label">Choice Remarks:</label>
+                    
+                    <label class="col-sm-2 control-label" for="true">True
+                        <input type="radio" name="remarks" value="true" ng-model="choiceRemark" ng-value="true" id="true">
+                    </label>
+                    <label  class="col-sm-2 control-label">False
+                        <input type="radio" name="remarks" value="false" ng-model="choiceRemark" ng-value="false" id="false">
+                    </label>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+        </div>
+        <div class="col-sm-10">
+            <button class="btn btn-primary" ng-click="addItem()" onclick="focusOnChoice()">Add Choice(s)</button>
+            <button class="btn btn-danger" ng-click="remove()"> Remove Selected Choice </button>
+            <button type="submit" class="btn btn-primary" ng-click="addQuestions()" > Add Question to Test</button>
+
+        </div>
+    </div>
+    <div>
+        <div class="col-sm-2 control-label"></div>
+        <div class="class=col-sm-offset-2 col-sm-9">
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+
+</form>
+
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            <h1><small>List of Test Questions</small></h1>
+        </div>
+        <div class="col-sm-12">
+             <ul>
+                <li ng-repeat="item in testQuestions">
+                    <div>
+                    <h4><small>{{item.testType}}</small></h4>
+                    <h4><small>{{item.question}}</small></h4>
+
+                    <ul>
+                        <li ng-repeat="ch in item.questionChoices">
+                            <h5><small>{{ch.choice}}</small></h5>
+                        </li>
+                    </ul>
+                        <button class="btn-danger btn-xs" ng-click="deleteQuestion(item._id)">Remove Question</button>
+                    </div>
+                    <div col-sm-4>
+
+                    </div>
+                </li>
+             </ul>
+        </div>
+    </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="lib/bootstrap/docs.min.js"></script>
+</body>
+</html>

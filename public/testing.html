@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Add Questions to Tests</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/ng-grid.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <script type="text/javascript" src="lib/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular/ng-grid-2.0.11.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+
+<form>
+
+    <label>Select Test:
+        <select>
+            <option value="html">HTML</option>
+        </select>
+    </label>
+
+    <br>
+
+    <label>Question Type:
+        <label><input type ="radio" value="singleChoice" name="questionType">Single Choice</label>
+        <label><input type ="radio" value="multipleChoice" name="questionType">Multiple Choice</label>
+    </label>
+
+    <br>
+
+    <label>Choices Details:
+        <br>
+        <label>Choice:<input type="text"></label>
+        <label>Choice Remarks:
+            <label><input type="radio" name="remarks" value="true">True</label>
+            <label><input type="radio" name="remarks" value="false">False</label>
+        </label>
+    </label>
+
+    <br>
+
+    <input type="button" value="Add Choice">
+</form>
+
+<div ng-controller="MyCtrl" class="gridStyle" ng-grid="gridOptions"></div>
+
+
+
+
+</body>
+</html>

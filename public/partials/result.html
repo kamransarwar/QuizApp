@@ -1,0 +1,25 @@
+<section>
+
+<div class="container-fluid">
+
+    <br>
+    <br>
+
+
+
+    <h2 class="text-center"  ng-if="resultDetails.length>0"> You answered correctly </h2>
+    <h1 class="text-center"  ng-if="resultDetails.length>0">{{numberOfCorrectAnswers}} out of {{resultDetails.length+1}}</h1>
+    <h2 class="text-center"  ng-if="resultDetails.length>0">questions</h2>
+
+    <br class="text-center">
+    <br>
+
+    <h2  class="text-center"  ng-if="resultDetails.length>0">Your score is:</h2>
+    <h1 class="text-center" ng-if="resultDetails.length>0">{{(percentage/resultDetails.length).toFixed(0)}}%</h1>
+
+    <br>
+    <br>
+
+    <h1  class="text-center"  ng-if="resultDetails.length>0">{{congratulation}} </h1>
+</div>
+</section>

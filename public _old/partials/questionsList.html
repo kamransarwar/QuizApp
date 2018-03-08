@@ -1,0 +1,17 @@
+<section>
+
+    <h2>Click on question to review details:</h2>
+<ol>
+    <li ng-repeat="item in questions">
+
+            <a href="takeTest.html#/test/{{tname}}/{{questions.indexOf(item)}}">
+                <h4>{{item.question}}</h4>
+            </a>
+
+
+            <h4>Status: {{questionStatus(questions.indexOf(item))}}</h4>
+
+    </li>
+</ol>
+
+</section>

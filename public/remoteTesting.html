@@ -1,0 +1,22 @@
+<html>
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module('app', []);
+</script>
+<script src="service.js"></script>
+<script src="controller.js"></script>
+</head>
+<body>
+<h1>
+	Hello from Web.
+</h1>
+<div ng-app="app">
+    <div ng-controller="MainController">
+        <a href ng-click="updateName()">Update Name</a>
+        <p><strong>Name:</strong> {{name}}</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='csrf-token', content=_csrf)
+    meta(name='author', content='')
+    title #{title} | Quiz App
+
+
+    script(src="./components/angular/angular.min.js")
+    script(src="./components/angular/angular-route.min.js")
+    script(src="./components/js/app.js")
+    script(src="./components/js/takeQuizController.js")
+    link(href="./components/css/custom.css", rel="stylesheet")
+    script(src="./components/jquery/dist/jquery.min.js")
+    script(src="./components/jquery-autosize/jquery.autosize.min.js")
+    script(src="./components/js/custom.js")
+    script(src="./components/customLib/mainScreen.js")
+
+    != css('styles')
+
+  body
+    include partials/navbar
+
+    .container
+      include partials/flash
+      block content
+
+    !=js('application')
+
+

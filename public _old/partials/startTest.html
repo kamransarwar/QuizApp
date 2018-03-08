@@ -1,0 +1,55 @@
+<section>
+  <div ng-model="questions">
+    <div>
+        <a href="#/questionList/{{tname}}" ><button type="button" class="btn btn-primary">Review Questions</button></a>
+    </div>
+    
+   <div>
+    <h1><small>Question:{{currentQuestion}}/{{questions.length}}</small>{{questions[whichQuestion].question}}</h1>
+  </div>
+  <div>
+    <h4><small>Please select correct choice(s).</small></h4>
+      <ul class="list-unstyled">
+          <li ng-repeat="item in questions[whichQuestion].questionChoices">
+            <label ng-if="choiceType==='checkbox'">
+              <input type="{{choiceType}}" name="{{whichQuestion}}" ng-model="cr[$index]">
+                {{item.choice}}
+            </label>
+            <label ng-if="choiceType ==='radio'">
+              <input type="{{choiceType}}"  ng-click="setRadioChoiceAndRemark(item.choice)" name="radioButton">
+                {{item.choice}}
+            </label>
+          </li>
+      </ul>
+  <div>
+
+
+
+      <br>
+      <br>
+
+      <a href="#/test/{{tname}}/{{previousItem}}" class="{{buttonsStat}}"><button type="button" class="btn btn-primary">&lt;&lt; Back</button></a>
+
+      <a href="#/test/{{tname}}/{{nextItem}}" ><button type="button" class="btn btn-primary" ng-click="attemptLater(whichQuestion)">Attempt Later</button></a>
+      
+      <a href="#/test/{{tname}}/{{nextItem}}"  class="{{buttonsStat}}"><button type="button" class="btn btn-primary" ng-click="addValueToResponseArray(whichQuestion, choiceType)">Next &gt;&gt;</button></a>
+
+
+      <br>
+      <br>
+
+      <a href="#/result/{{tname}}"><button  type="button" class="btn btn-danger"  ng-click="addValueToResponseArray(whichQuestion)">Submit Test</button></a>
+
+
+
+  </div>
+
+  <div>
+
+<!--     <input type="hidden" value={{questions[whichQuestion]._id}} ng-model="qid">
+    <input type="hidden" value={{questions[whichQuestion].question}} ng-model="q"> -->
+
+
+  </div>
+
+</section>

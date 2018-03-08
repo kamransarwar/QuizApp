@@ -1,0 +1,65 @@
+extends layout
+block content
+        input(type='hidden', name='_csrf', value=_csrf)
+        div(ng-app="app" ng-controller="stTable")
+            div
+                a(href="/createtest")
+                    button.btn.btn-default.btnSize
+                        span.glyphicon.glyphicon-plus
+                        | Create New Test
+                span
+                    input.form-control.form-inline(type="search")
+            div
+                table.table.table-striped
+                    thead
+                        tr
+                            th.col-xs-3 Actions
+                            th.col-xs-2 Test Name
+                            th.col-xs-3 Description
+                            th.col-xs-2 Category
+                            th.col-xs-2 Tags
+                    tbody
+                        tr(ng-repeat="row in rowCollection")
+                            td
+                                a(href="/updatetest")
+                                    button.btn.btn-default.btn-xs
+                                        span.glyphicon.glyphicon-edit
+                                        | Edit
+                                a(href="#")
+                                    button.btn.btn-default.btn-xs
+                                        span.glyphicon.glyphicon-remove-circle
+                                        | Delete
+                            td {{row.testName}}
+                            td {{row.testName}}
+                            td {{row.testName}}
+                            td {{row.testName}}
+            div
+                a(href="/addquestiontotest")
+                    button.btn.btn-default.btnSize
+                        span.glyphicon.glyphicon-plus
+                        | Add Question to Test
+            div
+                table.table.table-striped
+                    thead
+                        tr
+                            th.col-xs-3 Actions
+                            th.col-xs-2 Test Name
+                            th.col-xs-3 Description
+                            th.col-xs-2 Category
+                            th.col-xs-2 Tags
+                    tbody
+                        tr(ng-repeat="row in rowCollection")
+                            td
+                                a(href="updatequestion")
+                                    button.btn.btn-default.btn-xs
+                                        span.glyphicon.glyphicon-edit
+                                        | Edit
+                                a(href="#")
+                                    button.btn.btn-default.btn-xs
+                                        span.glyphicon.glyphicon-remove-circle
+                                        | Delete
+                            td {{row.testName}}
+                            td {{row.testName}}
+                            td {{row.testName}}
+                            td {{row.testName}}
+

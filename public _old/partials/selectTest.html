@@ -1,0 +1,35 @@
+<section>
+  <div>
+
+        <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Quiz Time!</h1>
+        <p>Are you excited to test your knowledge? Please select test and click on start test button to continue.
+        </p>
+        <br>
+        <p>We wish you best of luck!</p>
+        
+      </div>
+    </div>
+
+   
+        <ul class="list-unstyled">
+          <li ng-repeat="item in availabeTest" >
+            <label><input type="radio" name="availabeTest" value="{{item.testName}}" ng-model="userChoice.selectedTest"  ng-click="clearStorage();getQl(item.testName)"> {{item.testName}} </label>
+          </li>
+      </ul>
+
+        <br>
+
+     
+        <a href="#/test/{{userChoice.selectedTest}}/0">
+
+            <button type="button" class="btn btn-primary">Start Test!</button>
+
+        </a>
+
+
+
+  </div>
+
+</section>

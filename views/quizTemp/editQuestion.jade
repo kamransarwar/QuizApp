@@ -1,0 +1,75 @@
+extends ../layout
+block content
+    div
+    form.form-horizontal(role="form", oninput="output.value=questionTime.value", action="")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="test") Select Test:
+            .col-sm-10
+                input#test.form-control.input-sm(type="selectTest", ng-model="testName", required="required")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testQuestion") Question:
+            .col-sm-10
+                input#testQuestion.form-control.input-sm(type="text", name="question", ng-model="question", required="required")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="questionImage") Upload Image:
+            .col-sm-10
+                input#questionImage.form-control.input-sm(type="file", name="questionImage", ng-model="questionImage", accept="image/*")
+                small *Attach additional details of question in image format.
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="questionAdditionalDetails") Additional Details:
+            .col-sm-10
+                textarea#questionAdditionalDetails.form-control.input-sm.normal(name="questionAdditionalDetails", ng-model="questionAdditionalDetails")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label Question Type:
+            .col-sm-10
+                label.control-label
+                    input#signleChoice(type="radio", name="questionType")
+                    | Signle Choice
+                label
+                    input#multipleChoice(type="radio", name="questionType")
+                    | Multiple Choice
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="questionTime") Time (in sec):
+            .col-sm-1
+                input.form-control.text-center(type="text", for="questionTime", name="output", value="15", disabled="")
+            .col-sm-9
+                input#questionTime(type="range", value="15", min="15", max="180", step="1")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label Choice Details:
+            .col-sm-5
+                .col-sm-2
+                    label.control-label(for="choice") Choice:
+                .col-sm-10
+                    textarea#choice.form-control.input-sm.normal(type="text", ng-model="choiceDetail")
+            .col-sm-5
+                .col-sm-6
+                    label.control-label Choice Remarks:
+                .col-sm-3
+                    label.control-label(for="true")
+                        input#true(type="radio", name="remarks", value="true", ng-model="choiceRemark", ng-value="true")
+                        | True
+                .col-sm-3
+                    label.control-label
+                        input#false(type="radio", name="remarks", value="false", ng-model="choiceRemark", ng-value="false")
+                        | False
+        .col-sm-12.form-group.text-center
+            button.btn.btn-default.btn-sm(data-toggle="modal", data-target="#myModal")
+                span.glyphicon.glyphicon-plus
+                | Add Choice
+            button.btn.btn-default.btn-sm
+                span.glyphicon.glyphicon-remove
+                | Clear Choice
+        .col-sm-12.form-group.text-center
+            button.btn.btn-default(data-toggle="modal", data-target="#myModal")
+                span.glyphicon.glyphicon-share-alt
+                | Go Back
+            button.btn.btn-default
+                span.glyphicon.glyphicon-saved
+                | Save Question

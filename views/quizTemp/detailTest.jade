@@ -1,0 +1,357 @@
+extends ../layout
+block content
+    div
+    form.form-horizontal(role="form", action="/api/createTest", method="post")
+        input(type='hidden', name='_csrf', value=_csrf)
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="test") Test Name:
+            .col-sm-10
+                input.form-control(type="text", name="testName")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testDescription") Test Description:
+            .col-sm-10
+                input.form-control(type="text", name="testDescription")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testCategory") Test Category:
+            .col-sm-10
+                select#testCategory.form-control(name="testCategory")
+                    option(value="0") Select Test Category
+                    option(value="1") 3D and Animation
+                    option(value="2") 3D Drawing
+                    option(value="3") Accessibility
+                    option(value="4") Accounting
+                    option(value="5") Acoustical engineering
+                    option(value="6") Acoustics
+                    option(value="7") Administrative sciences including
+                    option(value="8") Advertisement
+                    option(value="9") Advertising
+                    option(value="10") Aeronautics
+                    option(value="11") Agriculture Engineering
+                    option(value="12") Analytical chemistry Crystallography
+                    option(value="13") Analytics
+                    option(value="14") Animation
+                    option(value="15") Anthropology including
+                    option(value="16") Applied Mathematics
+                    option(value="17") Applied mechanics
+                    option(value="18") Applied optics
+                    option(value="19") Archeology
+                    option(value="20") Architecture
+                    option(value="21") Arts and Humanities
+                    option(value="22") Astronautics
+                    option(value="23") Astronomy
+                    option(value="24") Astro-physics
+                    option(value="25") Audio and Music
+                    option(value="26") Audio Effects
+                    option(value="27") Audio Engineering
+                    option(value="28") Audio for Video
+                    option(value="29") Audio Foundations
+                    option(value="30") Audio Plug-Ins
+                    option(value="31") Banking
+                    option(value="32") Big Data
+                    option(value="33") BIM
+                    option(value="34") Biochemistry
+                    option(value="35") Bioengineering
+                    option(value="36") Biotechnology
+                    option(value="37") Black and White
+                    option(value="38") Blogs
+                    option(value="39") Botanical sciences
+                    option(value="40") Botany
+                    option(value="41") Branding
+                    option(value="42") Business
+                    option(value="43") Business Administration and Management
+                    option(value="44") Business Education
+                    option(value="45") Business Intelligence
+                    option(value="46") Business Skills
+                    option(value="47") CAD
+                    option(value="48") Cameras and Gear
+                    option(value="49") Career Development
+                    option(value="50") Character Animation
+                    option(value="51") Charts and Graphs
+                    option(value="52") Civil engineering
+                    option(value="53") Classroom Management
+                    option(value="54") Cloud Computing
+                    option(value="55") CMS
+                    option(value="56") Collaboration
+                    option(value="57") Color
+                    option(value="58") Color Correction
+                    option(value="59") Commerce
+                    option(value="60") Communication
+                    option(value="61") Compositing
+                    option(value="62") Computer Engineering
+                    option(value="63") Computer Skills
+                    option(value="65") Construction
+                    option(value="66") Content Marketing
+                    option(value="67") Content Strategy
+                    option(value="68") Creative Insights
+                    option(value="69") Creative Inspirations
+                    option(value="70") Creative Spark
+                    option(value="71") Criminology
+                    option(value="72") Data Analysis
+                    option(value="73") Databases
+                    option(value="74") DAWs
+                    option(value="75") Dentistry
+                    option(value="76") Dermatology
+                    option(value="77") Design
+                    option(value="78") Design Business
+                    option(value="79") Design Foundations
+                    option(value="80") Design Patterns
+                    option(value="81") Design Skills
+                    option(value="82") Design Techniques
+                    option(value="83") Desktop Apps
+                    option(value="84") Developer
+                    option(value="85") Development Tools
+                    option(value="86") Digital Painting
+                    option(value="87") Digital Publishing
+                    option(value="88") Documentaries
+                    option(value="89") Drawing
+                    option(value="90") DSLR Video
+                    option(value="91") DVD Authoring
+                    option(value="92") Earth sciences and Allied Sciences
+                    option(value="93") Earth, Atmosphere and Marine Sciences
+                    option(value="94") Ebooks
+                    option(value="95") Ecommerce
+                    option(value="96") Economic geology
+                    option(value="97") Economics
+                    option(value="98") Education
+                    option(value="99") Educational Technology
+                    option(value="100") Elearning
+                    option(value="101") Electrical engineering
+                    option(value="102") Electronics
+                    option(value="103") Email
+                    option(value="104") Email Marketing
+                    option(value="105") Engineering and Technology
+                    option(value="106") Engineering economy
+                    option(value="107") Engineering meteorology
+                    option(value="108") Enterprise Content Management
+                    option(value="109") Enterprise Marketing
+                    option(value="110") Environmental engineering
+                    option(value="111") Ergonomics
+                    option(value="112") Evolution and genetics Microbiology
+                    option(value="113") Film Scoring
+                    option(value="114") Filmmaking
+                    option(value="115") Finance
+                    option(value="116") Finance Management
+                    option(value="117") Fine Arts
+                    option(value="118") Flash Photography
+                    option(value="119") Forms
+                    option(value="120") Freelancing
+                    option(value="121") Game Design
+                    option(value="122") Game Development
+                    option(value="123") Games
+                    option(value="124") Geography
+                    option(value="125") Geology
+                    option(value="126") GIS
+                    option(value="127") HDR
+                    option(value="128") Higher Education
+                    option(value="129") Hillman Curtis Artist Series
+                    option(value="130") History
+                    option(value="131") Home and Small Office
+                    option(value="132") Hydraulic engineering
+                    option(value="133") hydrology
+                    option(value="134") Illustration
+                    option(value="135") Industrial engineering
+                    option(value="136") Infographics
+                    option(value="137") Instructional Design
+                    option(value="138") Interaction Design
+                    option(value="139") Interior Design
+                    option(value="140") Internal medicine
+                    option(value="141") International Relations
+                    option(value="142") iPad Music Production
+                    option(value="143") iPhone, iPod, iPad
+                    option(value="144") IT
+                    option(value="145") IT and Hardware
+                    option(value="146") IT Help Desk
+                    option(value="147") Journalism
+                    option(value="148") Keying
+                    option(value="149") Languages
+                    option(value="150") Law and Legislature
+                    option(value="151") Lead Generation
+                    option(value="152") Leadership
+                    option(value="153") Library and Archival Sciences
+                    option(value="154") Lighting
+                    option(value="155") Literature
+                    option(value="156") Live Performance
+                    option(value="157") LMS
+                    option(value="158") Logo Design
+                    option(value="159") lynda.com Presents
+                    option(value="160") Management
+                    option(value="161") Management engineering
+                    option(value="162") Management information systems
+                    option(value="163") Manufacturing
+                    option(value="164") Marketing
+                    option(value="165") Masking and Compositing
+                    option(value="166") mass
+                    option(value="167") Mastering
+                    option(value="168") Materials
+                    option(value="169") Mathematics
+                    option(value="170") Mechanical engineering
+                    option(value="171") Mechanics
+                    option(value="172") Medicine
+                    option(value="173") Medicine all subjects including
+                    option(value="174") MEP
+                    option(value="175") Metallurgy
+                    option(value="176") meteorology
+                    option(value="177") Microphones
+                    option(value="178") Mineralogy
+                    option(value="179") Mining engineering
+                    option(value="180") Mixing
+                    option(value="181") Mobile Apps
+                    option(value="182") Mobile Marketing
+                    option(value="183") Mobile Web
+                    option(value="184") Modeling
+                    option(value="185") Motion Graphics
+                    option(value="186") Museology
+                    option(value="187") Museum
+                    option(value="188") Music
+                    option(value="189") Music Business
+                    option(value="190") Music Composition
+                    option(value="191") Music Editing
+                    option(value="192") Music Notation
+                    option(value="193") Music Production
+                    option(value="194") Network Administration
+                    option(value="195") Night and Low Light
+                    option(value="196") Note Taking
+                    option(value="197") Nuclear engineering
+                    option(value="198") Nursing
+                    option(value="199") Oceanography
+                    option(value="200") Online Marketing
+                    option(value="201") Operating Systems
+                    option(value="202") Ophthalmology
+                    option(value="203") Page Layout
+                    option(value="204") Paleobotany
+                    option(value="205") Paleontology- Paleozoology
+                    option(value="206") Paleo-zoology
+                    option(value="207") Particles
+                    option(value="208") Pathology
+                    option(value="209") Pediatrics
+                    option(value="210") performing art
+                    option(value="211") Petrology
+                    option(value="212") Pharmacology
+                    option(value="213") Pharmacy
+                    option(value="214") Philosophy
+                    option(value="215") Photo Management
+                    option(value="216") Photography
+                    option(value="217") Photography Foundations
+                    option(value="218") Photonics
+                    option(value="219") Physical
+                    option(value="220") Physical anthropology
+                    option(value="221") Physical Sciences
+                    option(value="222") Physics all specialties including
+                    option(value="223") Plasma engineering
+                    option(value="224") Plugin
+                    option(value="225") Podcasting
+                    option(value="226") Political Science
+                    option(value="227") Portraits
+                    option(value="228") Post Production
+                    option(value="229") PPC
+                    option(value="230") Presentations
+                    option(value="231") Previsualization
+                    option(value="232") Print Design
+                    option(value="233") Print Production
+                    option(value="234") Printing Photos
+                    option(value="235") Product Design
+                    option(value="236") Productivity
+                    option(value="237") Programming Foundations
+                    option(value="238") Programming Languages
+                    option(value="239") Project Management
+                    option(value="240") Projects
+                    option(value="241") Proteomics
+                    option(value="242") Prototyping
+                    option(value="243") Psychology
+                    option(value="244") Public Administration
+                    option(value="245") Public Relations
+                    option(value="246") Raw Processing
+                    option(value="247") Recording Techniques
+                    option(value="248") Recreational
+                    option(value="249") Religious Studies
+                    option(value="250") Remixing
+                    option(value="251") Rendering
+                    option(value="252") Responsive Design
+                    option(value="253") Restoration
+                    option(value="254") Retouching
+                    option(value="255") Santa Barbara Film Festival
+                    option(value="256") Scanning
+                    option(value="257") science
+                    option(value="258") Screenwriting
+                    option(value="259") Security
+                    option(value="260") SEM
+                    option(value="261") SEO
+                    option(value="262") Servers
+                    option(value="263") Sharing Photos
+                    option(value="264") Sharpening
+                    option(value="265") Shooting Video
+                    option(value="266") Site-planning
+                    option(value="267") Small Business Marketing
+                    option(value="268") Social Media Advertising
+                    option(value="269") Social Media Marketing
+                    option(value="270") Social Networks
+                    option(value="271") Social Sciences
+                    option(value="272") Sociology
+                    option(value="273") sports
+                    option(value="274") Spreadsheets
+                    option(value="275") Start to Finish
+                    option(value="276") Statistics
+                    option(value="277") Structural
+                    option(value="278") Structural engineering
+                    option(value="279") Student Tools
+                    option(value="280") Studio Setup
+                    option(value="281") Systems engineering
+                    option(value="282") Teacher Professional Development
+                    option(value="283") Teacher Tools
+                    option(value="284") Technical Industrial research
+                    option(value="285") Technology includes
+                    option(value="286") Textures
+                    option(value="287") Time Management
+                    option(value="288") Tuning
+                    option(value="289") Typography
+                    option(value="290") User Experience
+                    option(value="291") Video
+                    option(value="292") Video Cameras
+                    option(value="293") Video Delivery
+                    option(value="294") Video Editing
+                    option(value="295") Video Foundations
+                    option(value="296") Video Pre-Production
+                    option(value="297") Virtual Instruments
+                    option(value="298") Virtualization
+                    option(value="299") Visual Effects
+                    option(value="300") Web
+                    option(value="301") Web Conferencing
+                    option(value="302") Web Design
+                    option(value="303") Web Development
+                    option(value="304") Web Fonts
+                    option(value="305") Web Foundations
+                    option(value="306") Web Graphics
+                    option(value="307") Web Video
+                    option(value="308") Wireframing
+                    option(value="309") Word Processing
+                    option(value="310") Writing
+                    option(value="311") Zoological sciences
+                    option(value="312") Zoology
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testInstructions") Test Instructions:
+            .col-sm-10
+                textarea.form-control.normal(rows="3", name="testInstructions")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testTagsOrKeywords") Tags or Keywords:
+            .col-sm-10
+                input.form-control(type="text", rows="3", name="tagsOrKeywords")
+        .col-sm-12.form-group
+            .col-sm-2
+                label.control-label(for="testTargetAudience") Target Audience:
+            .col-sm-10
+                input.form-control(type="text", rows="3", name="targetAudience")
+        .col-sm-12.text-center
+            button.btn.btn-primary
+                span.glyphicon.glyphicon-edit
+                | Create Test
+            button.btn.btn-primary
+                span.glyphicon.glyphicon-remove
+                | Clear Form
+            button.btn.btn-primary
+                span.glyphicon.glyphicon-share-alt
+                | Go Back
