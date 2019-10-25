@@ -1,20 +1,10 @@
----
-Please include the following markdown syntext in your writting.
----
-#Heading 1
-##Heading 2
-###Heading 3
-####Heading 4
-#####Heading 5
-######Heading 6	
+# Welcome to Quiz Appzz 👋
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 
----
+> Descriptionon
 
-Paragraph
-text `Inline Code` text		
-~~Mistaken text.~~	
-*Italics*	
-**Bold**	
+## Install
+
 
 ---
 
@@ -65,40 +55,33 @@ document.write(today);
 }
 ```
 
----
+```sh
+npm install
+```
 
-* List item one
-* List item two
-    * A nested item
+## Usage
 
----
 
-1. Number list item one		
-	1.1. A nested item
-2. Number list item two
-3. Number list item three
+```sh
+npm run start
+```
 
----
+## Author
 
-> Quote
-> 
-> Second line Quote
+👤 **kamransarwar**
 
----
+* Github: [@kamransarwar](https://github.com/kamransarwar)
 
-Standard link =  http://ghost.org	
-[Custom Text Link](http://ghost.org)
+## 🤝 Contributing
 
----
+Contributions, issues and feature requests are welcome!
 
-![Image](https://dl.dropboxusercontent.com/u/41297054/Pic.jpeg)
+Feel free to check [issues page](https://github.com/kamransarwar/QuizApp/issues).
 
----
+## Show your support
 
-Table
+Give a ⭐️ if this project helped you!
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
