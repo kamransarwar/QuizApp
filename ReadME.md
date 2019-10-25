@@ -40,11 +40,12 @@ var days = new Array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'
 
 var months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 
-var date = ((now.getDate()<10) ? "0" : "")+ now.getDate();
+var date = ((now.getDate()<10) ? "0" : "") + now.getDate();
 
-function fourdigits(number)	{
+function fourdigits(number){
 	return (number < 1000) ? number + 1900 : number;
-								}
+}
+
 today =  days[now.getDay()] + ", " +
          months[now.getMonth()] + " " +
          date + ", " +
@@ -55,11 +56,11 @@ document.write(today);
 
 ```css
 #sc_drag_area {
-  height:100px;
-  left:150px;
+  height: 100px;
+  left: 150px;
   position: absolute;
-  top:100px;
-  width:250px;
+  top: 100px;
+  width: 250px;
   z-index: 9999;
 }
 ```
