@@ -62,6 +62,10 @@ app.use((req, res, nxt) => {
       app.use(currentMiddleWare)
     })
   }
+
+  // ------------------- Temporary fix
+  res.locals.messages = {}
+
   nxt()
 })
 
