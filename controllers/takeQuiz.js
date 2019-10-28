@@ -7,38 +7,40 @@
  * Select Test.
  */
 
-exports.index = function(req, res) {
-    res.render('takeQuiz', {
-        title: 'Please select test'
-    });
-};
+module.exports = {
+  index: (req, res, nxt) => {
+    return res.render('takeQuiz', {
+      title: 'Please select test'
+    })
+  },
 
-exports.createQuizMainScreen = function(req, res) {
+  createQuizMainScreen: (req, res, nxt) => {
     res.render('createQuizMainScreen', {
-        title: 'List of Test'
-    });
-};
+      title: 'List of Test'
+    })
+  },
 
-exports.createQuizCreateTest = function(req, res) {
+  createQuizCreateTest: (req, res, nxt) => {
     res.render('./quizTemp/detailTest', {
-        title: 'Create Test'
-    });
-};
+      title: 'Create Test'
+    })
+  },
 
-exports.createQuizEditTest = function(req, res) {
+  createQuizEditTest: (req, res, nxt) => {
     res.render('./quizTemp/editTest', {
-        title: 'Update Test'
-    });
-};
+      title: 'Update Test'
+    })
+  },
 
-exports.createQuizAddQuestion = function(req, res) {
+  createQuizAddQuestion: (req, res, nxt) => {
     res.render('./quizTemp/detailQuestion', {
-        title: 'Add Question'
-    });
-};
+      title: 'Add Question'
+    })
+  },
 
-exports.createQuizEditQuestion = function(req, res) {
+  createQuizEditQuestion: (req, res, nxt) => {
     res.render('./quizTemp/editQuestion', {
-        title: 'Update Question'
-    });
-};
+      title: 'Update Question'
+    })
+  }
+}

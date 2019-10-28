@@ -1,175 +1,147 @@
 /**
- * Module dependencies.
+ * Modules
  */
 
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var compress = require('compression');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var errorHandler = require('errorhandler');
-var csrf = require('lusca').csrf();
-var methodOverride = require('method-override');
-var _ = require('lodash');
-var MongoStore = require('connect-mongo')(session);
-var flash = require('express-flash');
-var path = require('path');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var expressValidator = require('express-validator');
-var connectAssets = require('connect-assets');
+// Express init.
+const express = require('express')
+const app = express()
 
-/**
- * Controllers (route handlers).
- */
+// Secrets / Config
+const secrets = require('./config/secrets')
 
-var homeController = require('./controllers/home');
-var userController = require('./controllers/user');
-var quizController = require('./controllers/takeQuiz');
-var contactController = require('./controllers/contact');
+// Path
+const path = require('path')
 
-/**
- * API keys and Passport configuration.
- */
+// App configurations
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
 
-var secrets = require('./config/secrets');
-var passportConf = require('./config/passport');
+// Body parser
+const bodyParser = require('body-parser')
+app.use(bodyParser.json()) // For JSON
+app.use(bodyParser.urlencoded({ extended: false })) // For URL encoded data
 
-/**
- * Create Express server.
- */
+// Logger
+const logger = require('morgan')
+app.use(logger('dev'))
 
-var app = express();
+// DB ORM
+const mongoose = require('mongoose')
 
-/**
- * Connect to MongoDB.
- */
+// Session for express / mongodb
+const Session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(Session)
 
-mongoose.connect(secrets.db);
-mongoose.connection.on('error', function() {
-  console.error('MongoDB Connection Error. Make sure MongoDB is running.');
-});
+// Configure Mongo Store
+const store = new MongoDBStore({
+  uri: secrets.db
+})
+// If store has any error
+store.on('error', error => {
+  console.log(error)
+})
 
-/**
- * CSRF whitelist.
- */
-
-var csrfExclude = [ '/url1', '/url2'];
-
-/**
- * Express configuration.
- */
-
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(compress());
-app.use(connectAssets({
-  paths: [path.join(__dirname, 'public/css'), path.join(__dirname, 'public/js')],
-  helperContext: app.locals
-}));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
-app.use(methodOverride());
-app.use(cookieParser());
-app.use(session({
+// Init. DB session
+app.use(Session({
   resave: true,
   saveUninitialized: true,
   secret: secrets.sessionSecret,
-  store: new MongoStore({ url: secrets.db, auto_reconnect: true })
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-app.use(function(req, res, next) {
-  // CSRF protection.
-  if (_.contains(csrfExclude, req.path)) return next();
-  csrf(req, res, next);
-});
-app.use(function(req, res, next) {
-  // Make user object available in templates.
-  res.locals.user = req.user;
-  next();
-});
-app.use(function(req, res, next) {
-  // Remember original destination before login.
-  var path = req.path.split('/')[1];
-  if (/auth|login|logout|signup|fonts|favicon/i.test(path)) {
-    return next();
+  store: store
+}))
+
+// MiddleWares
+app.use((req, res, nxt) => {
+  // This will load all the middle-wares dynamically that are mentioned in the below file
+  const middlewares = require('./middlewares')
+
+  if (Object.keys(middlewares).length > 0) {
+    Object.keys(middlewares).forEach(key => {
+      // Init. the mentioned middlewares one by one
+      const currentMiddleWare = middlewares[key]
+      app.use(currentMiddleWare)
+    })
   }
-  req.session.returnTo = req.path;
-  next();
-});
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-/**
- * Main routes.
- */
+  // ------------------- Temporary fix
+  res.locals.messages = {}
 
+  nxt()
+})
 
+// ------- NOT SURE, WHAT THESE ARE DOING. SO, I HAVE THEM SEPARATE FROM DYNAMIC MIDDLEWARE FILE
 
-app.get('/', homeController.index);
-app.get('/test', quizController.index);
-app.get('/login', userController.getLogin);
-app.post('/login', userController.postLogin);
-app.get('/logout', userController.logout);
-app.get('/forgot', userController.getForgot);
-app.post('/forgot', userController.postForgot);
-app.get('/reset/:token', userController.getReset);
-app.post('/reset/:token', userController.postReset);
-app.get('/signup', userController.getSignup);
-app.post('/signup', userController.postSignup);
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
-app.get('/account', passportConf.isAuthenticated, userController.getAccount);
-app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
-app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
-app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
-app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+// ---- Remember original destination before login.
+// app.use((req, res, nxt) => {
+//   const path = req.path.split('/')[1]
+//   if (/auth|login|logout|signup|fonts|favicon/i.test(path)) {
+//     return nxt()
+//   }
+//   req.session.returnTo = req.path
+//   nxt()
+// })
 
+// ----  Make user available
+// app.use((req, res, nxt) => {
+//   if (req.hasOwnProperty('user')) res.locals.user = req.user
+//   nxt()
+// })
+// -------------------------------------------------------------------------------------------
 
-app.get('/mainscreen', passportConf.isAuthenticated, quizController.createQuizMainScreen);
-app.get('/createtest', passportConf.isAuthenticated, quizController.createQuizCreateTest);
-app.get('/updatetest', passportConf.isAuthenticated, quizController.createQuizEditTest);
-app.get('/createquestion', passportConf.isAuthenticated, quizController.createQuizAddQuestion);
-app.get('/updatequestion', passportConf.isAuthenticated, quizController.createQuizEditQuestion);
+// Connect assets together
+const connectAssets = require('connect-assets')
+app.use(connectAssets({
+  paths: [path.join(__dirname, 'public/css'), path.join(__dirname, 'public/js')],
+  helperContext: app.locals
+}))
 
-/**
- * API examples routes.
- */
+// All the available routes
+const routes = require('./routes')
+app.use(routes)
 
-require('./controllers/quizApis.js')(app);
-/*app.get('/api', apiController.getApi);
-app.get('/api/lastfm', apiController.getLastfm);
-app.get('/api/nyt', apiController.getNewYorkTimes);
-app.get('/api/aviary', apiController.getAviary);
-app.get('/api/steam', apiController.getSteam);
-app.get('/api/stripe', apiController.getStripe);
-app.post('/api/stripe', apiController.postStripe);
-app.get('/api/scraping', apiController.getScraping);
-app.get('/api/twilio', apiController.getTwilio);
-app.post('/api/twilio', apiController.postTwilio);
-app.get('/api/clockwork', apiController.getClockwork);
-app.post('/api/clockwork', apiController.postClockwork);
-app.get('/api/foursquare', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFoursquare);
-app.get('/api/tumblr', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTumblr);
-app.get('/api/facebook', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getFacebook);
-app.get('/api/github', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getGithub);
-app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
-app.post('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.postTwitter);
-app.get('/api/venmo', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getVenmo);
-app.post('/api/venmo', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.postVenmo);
-app.get('/api/linkedin', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getLinkedin);
-app.get('/api/instagram', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getInstagram);
-app.get('/api/yahoo', apiController.getYahoo);*/
+// Error Handler
+const errorHandler = require('errorhandler')
+app.use(errorHandler())
 
-/**
- * OAuth sign-in routes.
- */
+// Create connection to DB
+mongoose.connect(secrets.db, { useNewUrlParser: true, useUnifiedTopology: true }).then(result => {
+  console.log('Db connected')
 
+  const port = process.env.PORT || 3000
+  app.listen(port)
+
+  console.log(`App is listening on port ${port}`)
+}).catch(err => {
+  console.log(err)
+})
+
+// app.get('/', homeController.index); ---- Implemented
+// app.get('/test', quizController.index); ---- Implemented
+// app.get('/login', userController.getLogin);
+// app.post('/login', userController.postLogin);
+// app.get('/logout', userController.logout);
+// app.get('/forgot', userController.getForgot);
+// app.post('/forgot', userController.postForgot);
+// app.get('/reset/:token', userController.getReset);
+// app.post('/reset/:token', userController.postReset);
+// app.get('/signup', userController.getSignup);
+// app.post('/signup', userController.postSignup);
+// app.get('/contact', contactController.getContact);
+// app.post('/contact', contactController.postContact);
+// app.get('/account', passportConf.isAuthenticated, userController.getAccount);
+// app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
+// app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
+// app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
+// app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+// app.get('/mainscreen', passportConf.isAuthenticated, quizController.createQuizMainScreen);
+// app.get('/createtest', passportConf.isAuthenticated, quizController.createQuizCreateTest);
+// app.get('/updatetest', passportConf.isAuthenticated, quizController.createQuizEditTest);
+// app.get('/createquestion', passportConf.isAuthenticated, quizController.createQuizAddQuestion);
+// app.get('/updatequestion', passportConf.isAuthenticated, quizController.createQuizEditQuestion);
+
+/** ------------------------------ OAuth ROUTES ------------------------------
+ * 
 app.get('/auth/instagram', passport.authenticate('instagram'));
 app.get('/auth/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), function(req, res) {
   res.redirect(req.session.returnTo || '/');
@@ -194,38 +166,5 @@ app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), function(req, res) {
   res.redirect(req.session.returnTo || '/');
 });
-
-/**
- * OAuth authorization routes for API examples.
+ * 
  */
-/*
-
-app.get('/auth/foursquare', passport.authorize('foursquare'));
-app.get('/auth/foursquare/callback', passport.authorize('foursquare', { failureRedirect: '/api' }), function(req, res) {
-  res.redirect('/api/foursquare');
-});
-app.get('/auth/tumblr', passport.authorize('tumblr'));
-app.get('/auth/tumblr/callback', passport.authorize('tumblr', { failureRedirect: '/api' }), function(req, res) {
-  res.redirect('/api/tumblr');
-});
-app.get('/auth/venmo', passport.authorize('venmo', { scope: 'make_payments access_profile access_balance access_email access_phone' }));
-app.get('/auth/venmo/callback', passport.authorize('venmo', { failureRedirect: '/api' }), function(req, res) {
-  res.redirect('/api/venmo');
-});
-*/
-
-/**
- * 500 Error Handler.
- */
-
-app.use(errorHandler());
-
-/**
- * Start Express server.
- */
-
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
-});
-
-module.exports = app;
